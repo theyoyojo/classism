@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// Note from 25 January 2019: I should have documented this program
+
 typedef struct Cvector_public CVector_public ;
 typedef CVector_public * CVECTOR ;
 
@@ -34,8 +36,13 @@ Vector NONE ;
 #define push(d) flags -> fPush = 1 ; \
                _VECTOR -> push ( _VECTOR , d )
 
-#define getData() flags -> fGet_data = 1 ,\
-                ( _VECTOR -> getData ( _VECTOR ) , return_getData ( _VECTOR ) )
+#define getData() flags -> fGet_data -> enable()  ,\
+                 _VECTOR -> getData ( _VECTOR ) , return_getData ( _VECTOR )
+
+
+CVECTOR _VECTOR ;
+void class_vector_premain() __attribute__ ((constructor)) ;
+void class_vector_postmain() __attribute__ ((destructor)) ;
 
 CVECTOR vector_class_init ( void ) ;
 
@@ -52,7 +59,7 @@ int * return_getData ( CVECTOR _VECTOR ) ;
 #ifndef main
 #define main xmain( int argc , char * argv [] ) ; \
 CVECTOR _VECTOR = NULL ; \
-int main( int argc , char * argv [] ) \
+int main( int argc , char * argv [] ) 
 { \
   int main_return ; \
   if ( ( _VECTOR = vector_class_init () ) == NULL ) \

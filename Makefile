@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -Werror -pedantic -ansi -std=c11
 OBJECTS = main.o vector.o class_vector.o
 
 driver: $(OBJECTS)

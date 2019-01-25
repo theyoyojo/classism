@@ -26,6 +26,18 @@ typedef struct class_vector
   
 } CVector ;
 
+void class_vector_premain() {
+  _VECTOR = NULL ;
+  if ( ( _VECTOR = vector_class_init () ) == NULL ) {
+    printf ( "Vecto class init failed!\n" ) ;
+    exit(1) ;
+  }
+}
+
+void class_vector_postmain() {
+  vector_class_destroy ( & _VECTOR ) ;
+}
+
 void exec_init ( CVECTOR _VECTOR )
 {
   CAST_CLASS ; 

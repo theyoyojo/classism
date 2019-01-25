@@ -78,20 +78,16 @@ void vector_destroy ( VECTOR * phVector )
 
 int vector_get_size ( VECTOR hVector )
 {
-  int * dummy = vector_get_data ( hVector ) ;
+  vector_get_data ( hVector ) ;
   CAST ;
-
-  dummy = NULL ;
 
   return pVector -> size ;
 }
 
 int vector_get_capacity ( VECTOR hVector )
 {
-  int * dummy = vector_get_data ( hVector ) ;
+  vector_get_data ( hVector ) ;
   CAST ;
-
-  dummy = NULL ;
 
   return pVector -> capacity ;
 }
